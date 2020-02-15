@@ -1,9 +1,12 @@
 .item {
   width: 30%;
   margin: 3% 3% 3% 0 !important;
+  cursor: pointer;
   .price {
     font-size: 1rem;
     color: black;
     font-weight: 600;
+    display: inline-block;
+    margin-top: 10px;
   }
 }

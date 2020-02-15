@@ -1,20 +1,20 @@
 import * as actionTypes from './actionTypes'
 
 const initialState = {
-  products: {},
+  products: [],
   brands: []
 }
 
 export default function (state = initialState, action) {
   switch (action.type) {
     case actionTypes.PRODUCTS_SUCCESS:
-      const productslist = action.payload.reduce(
-        (accumulator, item) => ((accumulator[item.id] = item), accumulator),
-        {}
-      )
+      // const productslist = action.payload.reduce(
+      //   (accumulator, item) => ((accumulator[item.id] = item), accumulator),
+      //   {}
+      // )
       return {
         ...state,
-        products: { ...productslist }
+        products: [...action.payload]
       }
     case actionTypes.BRANDS_SUCCESS:
       return {

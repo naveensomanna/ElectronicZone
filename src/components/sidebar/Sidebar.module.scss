@@ -1,4 +1,17 @@
 .cardWrapper {
   width: 100%;
   height: calc(100% - 100px);
+  .title {
+    font-size: 1rem;
+    color: black;
+  }
+  .checklist {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+
+    label {
+      margin: 0;
+    }
+  }
 }

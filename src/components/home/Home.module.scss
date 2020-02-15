@@ -1,14 +1,18 @@
 .container {
-  display: flex;
-  background: #ececec;
-  .sideBar {
-    width: 30%;
-    margin: 5% 2% 0 5%;
-  }
-  .lists {
+  height: 100%;
+  .wrapper {
+    background: #ececec;
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin: 3% 0 5% 0;
+    height: 100%;
+    .sideBar {
+      width: 200px;
+      margin: 5% 2% 0 5%;
+    }
+    .lists {
+      display: flex;
+      flex-wrap: wrap;
+      width: 70%;
+      margin: 3% 0 5% 0;
+    }
   }
 }

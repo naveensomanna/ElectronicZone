@@ -12,8 +12,9 @@ const Header = ({ handleChange }) => {
         onChange={event => handleChange(event)}
         className={styles.search}
       />
-      <div>
-        <span>Login</span>
+      <div className={styles.loginWrapper}>
+        <span>SignIn</span>
+        <span>/</span>
         <span>SignUp</span>
       </div>
     </header>

@@ -5,8 +5,10 @@ import { brands } from '../actions'
 import styles from './Sidebar.module.scss'
 const Sidebar = ({ handleFiltered }) => {
   const [brands, setBrands] = useState([])
+  const [features, setfeatures] = useState([])
+  const [categories, setcategories] = useState([])
+
   const [selectedIds, setIds] = useState([])
-  //   const brands = useDispatch()
   useEffect(() => {
     fetch('https://my-json-server.typicode.com/banshilaldangi/ecommerce/brands')
       .then(response => response.json())
@@ -14,12 +16,28 @@ const Sidebar = ({ handleFiltered }) => {
         // dispatch(brands(result))
         setBrands(result)
       })
+    fetch(
+      'https://my-json-server.typicode.com/banshilaldangi/ecommerce/features'
+    )
+      .then(response => response.json())
+      .then(result => {
+        setfeatures(result)
+      })
+    fetch(
+      'https://my-json-server.typicode.com/banshilaldangi/ecommerce/categories'
+    )
+      .then(response => response.json())
+      .then(result => {
+        setcategories(result)
+      })
   }, [])
-  function onChange (event, brand) {
+  function onChange (event, selectedList, type) {
     if (event.target.checked) {
-      setIds([...selectedIds, brand.id])
+      setIds([...selectedIds, { type, id: selectedList.id }])
     } else {
-      const uncheck = selectedIds.filter(ids => ids !== brand.id)
+      const uncheck = selectedIds.filter(
+        selected => selected.id !== selectedList.id
+      )
       setIds(uncheck)
     }
   }
@@ -28,12 +46,28 @@ const Sidebar = ({ handleFiltered }) => {
   }, [selectedIds])
   return (
     <Card title='Apply Filter' bordered={false} className={styles.cardWrapper}>
-      <p>Brands</p>
-      {brands.map(brand => (
-        <Checkbox key={brand.id} onChange={event => onChange(event, brand)}>
-          {brand.name}
-        </Checkbox>
-      ))}
+      <p className={styles.title}>Brands</p>
+      <div className={styles.checklist}>
+        {brands.map(brand => (
+          <Checkbox
+            key={brand.id}
+            onChange={event => onChange(event, brand, 'brand')}
+          >
+            {brand.name}
+          </Checkbox>
+        ))}
+      </div>
+      <p className={styles.title}>Categories</p>
+      <div className={styles.checklist}>
+        {categories.map(category => (
+          <Checkbox
+            key={category.id}
+            onChange={event => onChange(event, category, 'category')}
+          >
+            {category.name}
+          </Checkbox>
+        ))}
+      </div>
     </Card>
   )
 }
