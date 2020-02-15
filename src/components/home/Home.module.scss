@@ -17,3 +17,23 @@
     }
   }
 }
+/* start of phone styles */
+
+@media screen and (max-width: 480px) {
+  .container {
+    overflow-x: hidden;
+    .wrapper {
+      flex-direction: column;
+      height: auto;
+      .sideBar {
+        width: 90%;
+      }
+      .lists {
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+        margin: 0 auto;
+      }
+    }
+  }
+}

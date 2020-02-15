@@ -16,3 +16,17 @@
     }
   }
 }
+/* start of phone styles */
+
+@media screen and (max-width: 480px) {
+  .cardWrapper {
+    .title {
+      font-size: 0.8rem;
+    }
+    .checklist {
+      label {
+        width: 100%;
+      }
+    }
+  }
+}

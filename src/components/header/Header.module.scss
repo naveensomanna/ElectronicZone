@@ -28,3 +28,24 @@
     }
   }
 }
+
+/* start of phone styles */
+
+@media screen and (max-width: 480px) {
+  .headerWrapper {
+    height: 60px;
+    .title {
+      font-size: 1rem;
+    }
+    .search {
+      width: 30%;
+    }
+    .loginWrapper {
+      span {
+        &:last-child {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
