@@ -1,7 +1,8 @@
+@import "../../variables";
 .container {
-  height: 100%;
+  height: 100vh;
   .wrapper {
-    background: #ececec;
+    background-color: $bg-color;
     display: flex;
     height: 100%;
     .sideBar {

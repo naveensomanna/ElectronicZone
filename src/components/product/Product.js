@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { useHistory } from 'react-router-dom'
 import { Card, Button } from 'antd'
+import styles from './Product.module.scss'
 const Product = () => {
   const [selectedItem, setSelectedItem] = useState([])
   const productsList = useSelector(state => state.products.products)
@@ -13,41 +14,31 @@ const Product = () => {
     setSelectedItem(selected)
   }, [])
   return (
-    <div
-      style={{
-        background: '#ececec',
-        height: '100vh'
-      }}
-    >
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '100%'
-        }}
-      >
-        <div style={{ width: '60%', height: '70%' }}>
+    <div className={styles.itemWrapper}>
+      <div className={styles.itemContainer}>
+        <div className={styles.cardContainer}>
           <Button type='primary' size='large' onClick={() => history.goBack()}>
             Go Back
           </Button>
-          <Card style={{ display: 'flex' }}>
-            <div style={{ width: '300px', height: '300px' }}>
+          <Card className={styles.cardWrapper}>
+            <div className={styles.imageWrapper}>
               <img
                 alt='camera'
                 src='https://images.pexels.com/photos/274973/pexels-photo-274973.jpeg?cs=srgb&dl=aperture-black-blur-camera-274973.jpg&fm=jpg'
-                style={{ maxWidth: '100%' }}
+                className={styles.image}
               />
             </div>
-            {selectedItem.map(item => {
-              return (
-                <div>
-                  <p>{item.name}</p>
-                  <p>{item.price}</p>
-                  <p>{item.description}</p>
-                </div>
-              )
-            })}
+            <div className={styles.details}>
+              {selectedItem.map(item => {
+                return (
+                  <>
+                    <h1>{item.name}</h1>
+                    <span className={styles.price}>Price Rs.{item.price}</span>
+                    <p className={styles.description}>{item.description}</p>
+                  </>
+                )
+              })}
+            </div>
           </Card>
         </div>
       </div>
