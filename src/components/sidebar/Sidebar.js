@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { Card, Checkbox } from 'antd'
-import { brands } from '../actions'
 import styles from './Sidebar.module.scss'
 const Sidebar = ({ handleFiltered }) => {
   const [brands, setBrands] = useState([])
-  const [features, setfeatures] = useState([])
   const [categories, setcategories] = useState([])
 
   const [selectedIds, setIds] = useState([])
@@ -13,16 +10,9 @@ const Sidebar = ({ handleFiltered }) => {
     fetch('https://my-json-server.typicode.com/banshilaldangi/ecommerce/brands')
       .then(response => response.json())
       .then(result => {
-        // dispatch(brands(result))
         setBrands(result)
       })
-    fetch(
-      'https://my-json-server.typicode.com/banshilaldangi/ecommerce/features'
-    )
-      .then(response => response.json())
-      .then(result => {
-        setfeatures(result)
-      })
+
     fetch(
       'https://my-json-server.typicode.com/banshilaldangi/ecommerce/categories'
     )
